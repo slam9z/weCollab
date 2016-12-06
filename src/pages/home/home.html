@@ -1,0 +1,10 @@
+<ion-header color="primary">
+    <ion-searchbar [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+</ion-header>
+<ion-tabs>
+    <ion-tab [root]="tab1Root" tabTitle="My Services" tabIcon="home"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Message" tabIcon="text"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="Notification" tabIcon="stats"></ion-tab>
+    <ion-tab [root]="tab4Root" tabTitle="Me" tabIcon="image"></ion-tab>
+</ion-tabs>
