@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ServiceFormPage } from '../../pages/pages';
 /*
   Generated class for the MyServices page.
 
@@ -17,6 +18,10 @@ export class MyServicesPage {
 
   ionViewDidLoad() {
     console.log('Hello MyServicesPage Page');
+  }
+
+  newService(){
+    this.navCtrl.push(ServiceFormPage);
   }
 
 }
