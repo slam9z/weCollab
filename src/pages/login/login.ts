@@ -39,14 +39,14 @@ export class LoginPage {
   }
   
   onSubmit(formData) {
-    console.log('Form submitted is ', formData);
+    
     let loadingCtrl = this.loadingController.create({
       content: 'Verifying...',
       dismissOnPageChange: true
     });    
     let email = this.loginForm.controls['email'].value;
     let password = this.loginForm.controls['password'].value;
-    //this.userService.login(email,password);
+    
     loadingCtrl.present().then(() => {
         this.userService.login(email,password)
                         .then(

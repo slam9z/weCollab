@@ -23,6 +23,7 @@
         <ion-item>
             <ion-label floating>Password</ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
+
         </ion-item>
         <control-message [control]="loginForm.controls.password"></control-message>
         <button ion-button full item-right icon-left type="Submit" [disabled]="!loginForm.valid ">

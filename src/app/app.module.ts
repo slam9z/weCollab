@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { LoginPage, RegisterPage, HomePage, MePage, MessagePage, NotificationPage, MyServicesPage } from '../pages/pages';
+import { LoginPage, RegisterPage, HomePage, MePage, MessagePage, NotificationPage, MyServicesPage, ServiceFormPage } from '../pages/pages';
 import { ControlMessageComponent } from '../components/components';
 import { ValidationService, UsersService } from '../providers/providers';
 
@@ -19,6 +19,7 @@ import { firebaseConfig } from '../environment/firebase.config';
     MessagePage, 
     NotificationPage, 
     MyServicesPage,
+    ServiceFormPage,
     ControlMessageComponent
   ],
   imports: [
@@ -35,6 +36,7 @@ import { firebaseConfig } from '../environment/firebase.config';
     MessagePage, 
     NotificationPage, 
     MyServicesPage,
+    ServiceFormPage,
     ControlMessageComponent
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler }, ValidationService, UsersService]})
