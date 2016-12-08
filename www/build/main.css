@@ -21749,6 +21749,15 @@ sub {
   }
 }
 
+<<<<<<< HEAD
 h1 {
   padding-left: 135px;
+=======
+page-service-form .placeholder-text {
+  font-size: 0.8em;
+}
+
+page-service-form .textarea {
+  height: 25px;
+>>>>>>> origin/Louis
 }
