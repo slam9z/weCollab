@@ -5,79 +5,39 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar color="primary">
-        <ion-title>New Service</ion-title>
-
+    <ion-navbar>
+        <ion-title>ServiceForm</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+
     <form [formGroup]="serviceForm" (ngSubmit)="onSubmit(serviceForm.value)">
-        <ion-card>
-            <ion-card-content>
-                <ion-row>
-                    <ion-col width-25>
+        <ion-row>
+            <ion-col width-33>
+                <ion-card>
+                    <ion-card-content>
                         <ion-item>
                             <img src="../assets/img/avatars.png" alt="Service Logo" (click)="uploadSevericeLogo($event)">
                         </ion-item>
-
-                    </ion-col>
-                    <ion-col>
-                        <ion-item>
-                            <ion-label>
-                                <ion-icon small name="magnet"></ion-icon>
-                            </ion-label>
-                            <ion-input type="text" formControlName="sTitle" class="placeholder-text" placeholder="Service Title"></ion-input>
-                            <control-message [control]="serviceForm.controls.sTitle"></control-message>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>
-                                <ion-icon small name="calendar"></ion-icon>
-                            </ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" class="placeholder-text" [(ngModel)]="sDate" [ngModelOptions]="{standalone: true}">
-                            </ion-datetime>
-                        </ion-item>
-                    </ion-col>
-                </ion-row>
-            </ion-card-content>
-        </ion-card>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <ion-icon name="person" item-left></ion-icon>
+                    <ion-input type="text" formControlName="sTitle" placeholder="Service Title"></ion-input>
+                    <control-message [control]="serviceForm.controls.sTitle"></control-message>
+                </ion-item>
+            </ion-col>
+        </ion-row>
 
         <ion-item>
-            <ion-label>
-                <ion-icon small name="document" item-left></ion-icon>
-            </ion-label>
-            <ion-textarea row="5" formControlName="sDescription" class="placeholder-text textarea" placeholder="Description">
-
-            </ion-textarea>
+            <ion-icon name="document" item-left></ion-icon>
+            <ion-textarea row="5" formControlName="sDescription" placeholder="Description"></ion-textarea>
         </ion-item>
+        <control-message [control]="serviceForm.controls.sDescription"></control-message>
 
-        <ion-item>
-            <ion-label>
-                <ion-icon small name="list" item-left></ion-icon>
-            </ion-label>
-            <ion-textarea row="5" formControlName="sSkillSets" class="placeholder-text textarea" placeholder="Skill Sets may use in this service (Excel, PowerPoint, R, Data Mining etc... )">
-
-            </ion-textarea>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                <ion-icon small name="pin" item-left></ion-icon>
-            </ion-label>
-            <ion-textarea row="5" formControlName="sLocation" class="placeholder-text textarea" placeholder="Service Location">
-
-            </ion-textarea>
-        </ion-item>
-        <ion-item>
-            <ion-label>
-                <ion-icon small name="person" item-left></ion-icon>
-            </ion-label>
-            <ion-input type="number" formControlName="sTeamSize" class="placeholder-text" placeholder="Team Size"></ion-input>
-        </ion-item>
-
-        <button ion-button small round type="Submit">
-              <ion-icon name="checkmark-circle-outline" item-left></ion-icon>
-            Publish
-        </button>
-
+        <button ion-button type="Submit" full>Publish</button>
     </form>
 
 </ion-content>

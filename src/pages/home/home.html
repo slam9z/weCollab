@@ -1,5 +1,7 @@
-<ion-header>
-
+<ion-header color="primary">
+    <ion-searchbar [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    <h1>Welcome</h1>
 </ion-header>
 <ion-tabs>
     <ion-tab [root]="tab1Root" tabTitle="My Services" tabIcon="home"></ion-tab>

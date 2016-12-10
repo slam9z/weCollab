@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+
 import { AngularFire, FirebaseListObservable, AuthProviders , AuthMethods } from 'angularfire2';
 
 @Injectable()
 export class UsersService {
-    private currentUser: any;
+    public currentUser: any;
     public auth: any;
     public userProfile: FirebaseListObservable<any>;
 
-    constructor(private af: AngularFire, public storage: Storage) {
+    constructor(private af: AngularFire) {
         this.auth = af.auth;
     }
 
@@ -23,10 +23,7 @@ export class UsersService {
                 provider: AuthProviders.Password,
                 method: AuthMethods.Password
             }).then(
-                    userData => {
-                        this.setCurrentUser(userData.uid);
-                        resolve(userData);
-                    } ,
+                    userData => resolve(userData) ,
                     err => reject(err)
                 )
             });
@@ -37,7 +34,6 @@ export class UsersService {
             this.auth.createUser({ email: email, password: password })
                 .then((newUser) => {
                     if (newUser) {
-                    this.setCurrentUser(newUser.uid);
                     const itemObservable = this.af.database.object('/userProfile/' + newUser.uid);
                     itemObservable.set({
                             fname: fname,
@@ -53,18 +49,7 @@ export class UsersService {
     }
 
     public logout() {
-        this.storage.remove('userId');
         this.auth.logout();
-    }
-
-    public setCurrentUser( uid){
-        this.storage.set('userId', uid);
-        this.currentUser = uid;
-    }
-    public getCurrentUser(){
-       return this.storage.get('userId').then((value) => {
-        return value;
-        });
     }
 
 }
