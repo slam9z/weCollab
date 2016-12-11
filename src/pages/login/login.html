@@ -21,14 +21,15 @@
                 Email</ion-label>
             <ion-input type="email" formControlName="email" spellcheck="false" autocapitalize="off"></ion-input>
         </ion-item>
-        <control-message [control]="loginForm.controls.email"></control-message>
+
+        <control-message [control]="loginForm.get('email')"></control-message>
         <ion-item>
             <ion-label floating>
                 <ion-icon name="lock" item-left></ion-icon> Password</ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
 
         </ion-item>
-        <control-message [control]="loginForm.controls.password"></control-message>
+        <control-message [control]="loginForm.get('password')"></control-message>
         <button ion-button full item-right icon-left type="Submit" [disabled]="!loginForm.valid">
             <ion-icon name="person" item-left> </ion-icon>
             Sign in

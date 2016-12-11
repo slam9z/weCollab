@@ -3,8 +3,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ValidationService, UsersService } from '../../providers/providers';
 import { LoadingController, AlertController,  NavController } from 'ionic-angular';
 import { RegisterPage, HomePage } from '../../pages/pages';
-import { Storage, SqlStorage } from 'ionic-framework/ionic';
-
 
 /*
   Generated class for the Login page.
@@ -44,8 +42,8 @@ export class LoginPage {
       content: 'Verifying...',
       dismissOnPageChange: true
     });    
-    let email = this.loginForm.controls['email'].value;
-    let password = this.loginForm.controls['password'].value;
+    let email = formData.email;
+    let password = formData.password;
     
     loadingCtrl.present().then(() => {
         this.userService.login(email,password)
@@ -55,6 +53,7 @@ export class LoginPage {
                                   
                                   this.navCtrl.setRoot(HomePage);
                                   this.navCtrl.push(HomePage);
+
                                 }
                               },(error) => {
                                 loadingCtrl.dismiss().then(() => {

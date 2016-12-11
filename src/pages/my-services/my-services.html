@@ -5,12 +5,12 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-        <ion-segment>
-            <ion-segment-button value="all">
+    <ion-navbar no-border-bottom>
+        <ion-segment [(ngModel)]="segment">
+            <ion-segment-button value="all" (click)="onChangeSegment('all')">
                 All
             </ion-segment-button>
-            <ion-segment-button value="favorites">
+            <ion-segment-button value="favorites" (click)="onChangeSegment('favorites')">
                 Favorites
             </ion-segment-button>
         </ion-segment>
@@ -21,12 +21,42 @@
         </ion-buttons>
     </ion-navbar>
     <ion-toolbar no-border-top>
-        <ion-searchbar [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+        <ion-searchbar placeholder="Search" show-cancel="true" (click)="goToSearch()">
         </ion-searchbar>
     </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
+    <ion-card *ngIf="!allServiceList">
+        <ion-list-header class="my-team-header">No Joined Services.</ion-list-header>
+        <ion-card-content>
+            <p>You are not currently joining any servcices.</p>
+            <p>Adding a service by clicking the '+' icon at the right top corner.</p>
 
+        </ion-card-content>
+    </ion-card>
+    <ion-list *ngIf="resultsList" no-lines>
+        <ion-item *ngFor="let serv of resultsList | async">
+            <ion-row>
+                <ion-card *ngIf="serv.dtl" (click)="onCardClick($event, serv.$key, serv.isFavorite,serv.dtl)">
+                    <ion-item>
+                        <ion-avatar item-left><img src="assets/img/avatars.png" alt="Service Logo"></ion-avatar>
+                        <h2>{{serv.dtl.serviceTitle}}</h2>
+
+                        <p>
+                            <ion-icon name="calendar" item-left></ion-icon>{{serv.dtl.serviceStartDate}}
+                        </p>
+                    </ion-item>
+                    <ion-card-content>
+
+                        <p>
+                            {{serv.dtl.serviceDesc}}
+                        </p>
+                    </ion-card-content>
+
+                </ion-card>
+            </ion-row>
+        </ion-item>
+    </ion-list>
 </ion-content>

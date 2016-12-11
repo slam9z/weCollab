@@ -33,16 +33,16 @@ export class RegisterPage {
     console.log('Hello RegisterPage Page');
   }
 
-  OnCreateAccount(){
+  OnCreateAccount(formData){
   let loadingCtrl = this.loadingController.create({
       content: 'Creating Account...',
       dismissOnPageChange: true
     });   
 
-    let fname = this.registerForm.controls['fname'].value;
-    let lname = this.registerForm.controls['lname'].value; 
-    let email = this.registerForm.controls['email'].value;
-    let password = this.registerForm.controls['password'].value;
+    let fname = formData.fname;
+    let lname = formData.lname; 
+    let email = formData.email;
+    let password = formData.password;
 
     loadingCtrl.present().then(() => {
         this.userService.register(fname,lname,email,password)

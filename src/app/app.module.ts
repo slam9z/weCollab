@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { LoginPage, RegisterPage, HomePage, MePage, MessagePage, NotificationPage, MyServicesPage, ServiceFormPage } from '../pages/pages';
+import { LoginPage, RegisterPage, HomePage, MePage, MessagePage, NotificationPage, MyServicesPage, ServiceFormPage, SearchPage} from '../pages/pages';
 import { ControlMessageComponent } from '../components/components';
 import { ValidationService, UsersService, DataService } from '../providers/providers';
 
@@ -20,6 +20,7 @@ import { Storage } from '@ionic/storage';
     NotificationPage, 
     MyServicesPage,
     ServiceFormPage,
+    SearchPage,
     ControlMessageComponent
   ],
   imports: [
@@ -37,6 +38,7 @@ import { Storage } from '@ionic/storage';
     NotificationPage, 
     MyServicesPage,
     ServiceFormPage,
+    SearchPage,
     ControlMessageComponent
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler }, 

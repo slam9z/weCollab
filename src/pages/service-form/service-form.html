@@ -6,18 +6,23 @@
 -->
 <ion-header>
     <ion-navbar color="primary">
-        <ion-title>New Service</ion-title>
-
+        <ion-title>{{title}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="onSubmit(serviceForm.value)">
+                {{operatorType}}
+            </button>
+        </ion-buttons>
     </ion-navbar>
+
 </ion-header>
 <ion-content padding>
-    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit(serviceForm.value)">
+    <form [formGroup]="serviceForm">
         <ion-card>
             <ion-card-content>
                 <ion-row>
                     <ion-col width-25>
                         <ion-item>
-                            <img src="../assets/img/avatars.png" alt="Service Logo" (click)="uploadSevericeLogo($event)">
+                            <img src="assets/img/avatars.png" alt="Service Logo" (click)="takePicture()">
                         </ion-item>
 
                     </ion-col>
@@ -27,15 +32,44 @@
                                 <ion-icon small name="magnet"></ion-icon>
                             </ion-label>
                             <ion-input type="text" formControlName="sTitle" class="placeholder-text" placeholder="Service Title"></ion-input>
-                            <control-message [control]="serviceForm.controls.sTitle"></control-message>
+                            <control-message [control]="serviceForm.get('sTitle')"></control-message>
                         </ion-item>
                         <ion-item>
                             <ion-label>
                                 <ion-icon small name="calendar"></ion-icon>
                             </ion-label>
-                            <ion-datetime displayFormat="MM/DD/YYYY" class="placeholder-text" [(ngModel)]="sDate" [ngModelOptions]="{standalone: true}">
+                            <ion-datetime displayFormat="MM/DD/YYYY" class="placeholder-text" formControlName="sDate">
                             </ion-datetime>
                         </ion-item>
+
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="!isNewForm">
+                    <ion-col>
+                        <ion-buttons start>
+                            <button ion-button small outline (click)="toggleFav()" *ngIf="!isFavorited">
+                                <ion-icon name="star" item-left></ion-icon>
+                                
+                            </button>
+                            <button ion-button small color="danger" (click)="toggleFav()" *ngIf="isFavorited">
+                                <ion-icon name="star" item-left></ion-icon>
+                                
+                            </button>
+                        </ion-buttons>
+                    </ion-col>
+
+                    <ion-col>
+                        <ion-buttons end>
+                            <button ion-button small outline (click)="onClickJoin()" *ngIf="!isCreator">
+                                <ion-icon name="add-circle" item-left></ion-icon>
+                            </button>
+
+                            <button ion-button small outline color="danger" (click)="onClickRemove()" *ngIf="isCreator ">
+                                <ion-icon name="trash" item-left></ion-icon>
+                                
+                            </button>
+
+                        </ion-buttons>
                     </ion-col>
                 </ion-row>
             </ion-card-content>
@@ -72,11 +106,6 @@
             </ion-label>
             <ion-input type="number" formControlName="sTeamSize" class="placeholder-text" placeholder="Team Size"></ion-input>
         </ion-item>
-
-        <button ion-button small round type="Submit">
-              <ion-icon name="checkmark-circle-outline" item-left></ion-icon>
-            Publish
-        </button>
 
     </form>
 

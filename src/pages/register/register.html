@@ -14,28 +14,28 @@
 
 
 <ion-content padding>
-    <form [formGroup]="registerForm" (ngSubmit)="OnCreateAccount()">
+    <form [formGroup]="registerForm" (ngSubmit)="OnCreateAccount(registerForm.value)">
         <ion-item>
             <ion-label floating>First Name </ion-label>
             <ion-input type="text" formControlName="fname"></ion-input>
         </ion-item>
-        <control-message [control]="registerForm.controls.fname"></control-message>
+        <control-message [control]="registerForm.get('fname')"></control-message>
         <ion-item>
             <ion-label floating>Last Name</ion-label>
             <ion-input type="text" formControlName="lname"></ion-input>
         </ion-item>
-        <control-message [control]="registerForm.controls.lname"></control-message>
+        <control-message [control]="registerForm.get('lname')"></control-message>
         <ion-item>
             <ion-label floating>Email</ion-label>
             <ion-input type="text" formControlName="email"></ion-input>
         </ion-item>
-        <control-message [control]="registerForm.controls.email"></control-message>
+        <control-message [control]="registerForm.get('email')"></control-message>
 
         <ion-item>
             <ion-label floating>Password</ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
-        <control-message [control]="registerForm.controls.password"></control-message>
+        <control-message [control]="registerForm.get('password')"></control-message>
 
         <button ion-button full item-right icon-left type="Submit" [disabled]="!registerForm.valid" color="primary">
             Submit
