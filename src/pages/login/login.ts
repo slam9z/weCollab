@@ -52,6 +52,7 @@ export class LoginPage {
                         .then(
                               (data) => {
                                 if (data){
+                                  
                                   this.navCtrl.setRoot(HomePage);
                                   this.navCtrl.push(HomePage);
                                 }

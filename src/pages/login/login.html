@@ -16,24 +16,31 @@
 <ion-content padding>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
         <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
+            <ion-label floating>
+                <ion-icon name="mail" item-left></ion-icon>
+                Email</ion-label>
+            <ion-input type="email" formControlName="email" spellcheck="false" autocapitalize="off"></ion-input>
         </ion-item>
         <control-message [control]="loginForm.controls.email"></control-message>
         <ion-item>
-            <ion-label floating>Password</ion-label>
+            <ion-label floating>
+                <ion-icon name="lock" item-left></ion-icon> Password</ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
 
         </ion-item>
         <control-message [control]="loginForm.controls.password"></control-message>
-        <button ion-button full item-right icon-left type="Submit" [disabled]="!loginForm.valid ">
+        <button ion-button full item-right icon-left type="Submit" [disabled]="!loginForm.valid">
             <ion-icon name="person" item-left> </ion-icon>
             Sign in
         </button>
     </form>
-    <button ion-button clear clear ion-left (click)="goToRegister()">Forgot Password?</button>
+<<<<<<< HEAD
+=======
+    <button ion-button clear clear ion-left small (click)="goToRegister()">Forgot Password?</button>
+>>>>>>> origin/Louis
 
+    <button ion-button block clear (click)="goToRegister()">Forgot Password?</button>
     <ion-footer no-shadow>
-        <button ion-button clear block small (click)="goToRegister()">Join Now</button>
+        <button ion-button clear block small (click)="goToRegister()">Join Now...</button>
     </ion-footer>
 </ion-content>

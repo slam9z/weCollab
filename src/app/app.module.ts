@@ -3,11 +3,11 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { LoginPage, RegisterPage, HomePage, MePage, MessagePage, NotificationPage, MyServicesPage, ServiceFormPage } from '../pages/pages';
 import { ControlMessageComponent } from '../components/components';
-import { ValidationService, UsersService } from '../providers/providers';
+import { ValidationService, UsersService, DataService } from '../providers/providers';
 
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from '../environment/firebase.config';
-
+import { Storage } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -39,5 +39,6 @@ import { firebaseConfig } from '../environment/firebase.config';
     ServiceFormPage,
     ControlMessageComponent
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler }, ValidationService, UsersService]})
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler }, 
+              ValidationService, DataService,  UsersService, Storage]})
 export class AppModule {}
