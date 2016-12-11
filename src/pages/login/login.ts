@@ -44,8 +44,8 @@ export class LoginPage {
       content: 'Verifying...',
       dismissOnPageChange: true
     });    
-    let email = this.loginForm.controls['email'].value;
-    let password = this.loginForm.controls['password'].value;
+    let email = this.loginForm.get('email').value;
+    let password = this.loginForm.get('password').value;
     
     loadingCtrl.present().then(() => {
         this.userService.login(email,password)
