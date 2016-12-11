@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="bimage">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
         <ion-item>
             <ion-label floating>
@@ -35,7 +35,7 @@
             Sign in
         </button>
     </form>
-    <button ion-button clear clear ion-left small (click)="goToRegister()">Forgot Password?</button>
+    <button class="fpbutton" ion-button block clear (click)="goToRegister()"><font color="white" font-weight: bold>Forgot Password?</font></button>
 
     <ion-footer no-shadow>
         <button ion-button clear block small (click)="goToRegister()">Join Now...</button>

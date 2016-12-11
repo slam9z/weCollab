@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, Searchbar } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { FirebaseListObservable } from 'angularfire2';
@@ -20,6 +20,7 @@ import { ServiceFormPage } from '../../pages/pages';
   selector: 'page-search',
   templateUrl: 'search.html'
 })
+
 export class SearchPage {
  
   queryKeyword: string;
@@ -39,17 +40,22 @@ export class SearchPage {
     var creator: string = res.creator;
     var title: string = res.serviceTitle;
     var desc: string = res.serviceDesc;
-    let isCreator, isTitle,isDescription =false;
-    if (creator  && creator.includes(this.queryKeyword))
+    var skillset: string = res.skillSets;
+    let isCreator, isTitle,isDescription, isSkillSet =false;
+
+    if (creator  && creator.indexOf(this.queryKeyword)>-1)
       isCreator= true;
 
-    if (title  && title.includes(this.queryKeyword))
+    if (title  && title.indexOf(this.queryKeyword) >-1)
       isTitle= true;
 
-    if (desc  && desc.includes(this.queryKeyword))
+    if (desc  && desc.indexOf(this.queryKeyword)>-1)
       isDescription= true;
 
-    return isCreator || isTitle || isDescription;
+    if (skillset  && skillset.indexOf(this.queryKeyword)>-1)
+      isSkillSet= true;
+
+    return isCreator || isTitle || isDescription ||isSkillSet;
   }
   ionViewDidLoad() {
     console.log('Hello SearchPage Page');
