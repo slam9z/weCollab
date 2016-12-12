@@ -6,13 +6,34 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Notification</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Notification</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+    <ion-list>
+        <ion-list-header>
+            Requests
+        </ion-list-header>
+        <ion-item *ngFor="let ntf of notifications" text-wrap>
 
+            <ion-avatar item-left>
+                <img [src]="ntf.avatar" alt="avatar">
+            </ion-avatar>
+
+            <h2>{{ntf.name}}</h2>
+
+            <h3>{{ntf.timestamp}}</h3>
+
+            <p>{{ntf.message}}</p>
+
+            <button ion-button outline end item-right (click)="goToUserProfileDtl(ntf)">
+                       View
+                    </button>
+        </ion-item>
+
+    </ion-list>
 </ion-content>

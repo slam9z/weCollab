@@ -15,20 +15,16 @@ import { MyServicesPage, MessagePage, NotificationPage, MePage } from '../../pag
 })
 export class HomePage {
 
+  NotificaitionCount :string = "3";
   tab1Root: any = MyServicesPage;
   tab2Root: any = MessagePage;
   tab3Root: any = NotificationPage;
   tab4Root: any = MePage;
 
   constructor(public navCtrl: NavController) {
-
-  }
-
-  onInput($event){
-
-  }
-
-  onCancel($event){
     
+   
   }
+  
+
 }

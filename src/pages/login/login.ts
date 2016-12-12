@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ValidationService, UsersService } from '../../providers/providers';
-import { LoadingController, AlertController,  NavController } from 'ionic-angular';
+import { LoadingController, AlertController,  NavController , NavParams} from 'ionic-angular';
 import { RegisterPage, HomePage } from '../../pages/pages';
 
 /*
@@ -16,12 +16,17 @@ import { RegisterPage, HomePage } from '../../pages/pages';
 })
 export class LoginPage {
   loginForm: FormGroup;
-  
+  _param : any;
   constructor(public navCtrl: NavController, 
+              public navParam: NavParams,
               private formBuilder: FormBuilder, 
               private userService: UsersService,
               public loadingController: LoadingController,
               public alertController: AlertController) {
+    this._param = this.navParam.data;
+    if (this._param === "logout"){
+      this.userService.logout();
+    }
     this.loginForm = formBuilder.group({
         email: ['', Validators.compose([
                         Validators.required,
@@ -32,6 +37,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
+    
     console.log('Hello LoginPage Page');
     
   }

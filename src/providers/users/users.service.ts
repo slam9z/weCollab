@@ -5,6 +5,7 @@ import { AngularFire, FirebaseListObservable, AuthProviders , AuthMethods } from
 @Injectable()
 export class UsersService {
     private currentUser: any;
+    private userInfo:any;
     public auth: any;
     public userProfile: FirebaseListObservable<any>;
 
@@ -25,6 +26,8 @@ export class UsersService {
             }).then(
                     userData => {
                         this.setCurrentUser(userData.uid);
+                        this.userInfo = userData;
+                        console.log(this.userInfo);
                         resolve(userData);
                     } ,
                     err => reject(err)
@@ -65,6 +68,10 @@ export class UsersService {
        return this.storage.get('userId').then((value) => {
         return value;
         });
+    }
+
+    public getCurrentUserInfo(){
+            return this.userInfo;
     }
 
 }

@@ -7,3 +7,4 @@ export * from './my-services/my-services';
 export * from './notification/notification';
 export * from './service-form/service-form';
 export * from './search/search';
+export * from './user-profile/user-profile'; 

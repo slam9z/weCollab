@@ -1,17 +1,76 @@
 <ion-header>
     <ion-navbar>
-        <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
         <ion-title>Account</ion-title>
+
     </ion-navbar>
 </ion-header>
 
-<ion-content class="outer-content">
-    <div padding-top text-center>
-        <img src="http://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
-        <h2>Tester </h2>
+<ion-content padding>
+    <ion-fab top right>
+        <button ion-fab><ion-icon name="menu"></ion-icon></button>
 
+        <ion-fab-list side="bottom">
 
-    </div>
+            <button ion-fab (click)="logout()">
+                <ion-icon name="person"></ion-icon>
+            </button>
+        </ion-fab-list>
+    </ion-fab>
+    <form [formGroup]="meForm" (ngSubmit)="onSubmit(meForm.value)">
+        <div padding-top>
+
+            <ion-card>
+
+                <ion-card-content>
+
+                    <ion-avatar class="item-avatar">
+                        <img src="http://www.gravatar.com/avatar/34562cc713be7f91d4a48138f8c93a74" alt="avatar">
+                    </ion-avatar>
+
+                    <ion-card-title text-center>
+                        <ion-input type="text" formControlName="name" [(ngModel)]="username"></ion-input>
+
+                    </ion-card-title>
+
+                    <p text-center>
+                        Rutgers MBS Student, interesting in font-end developement.
+                    </p>
+                </ion-card-content>
+
+            </ion-card>
+
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title text-center>
+                        Skill Sets
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+
+                    <button round small ion-button outline item-right icon-left *ngFor="let skill of skillsets">
+                        {{skill}}
+                    </button>
+
+                </ion-card-content>
+
+            </ion-card>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title text-center>
+                        Certification
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-list no-lines>
+                        <ion-item *ngFor="let cert of certification" text-wrap>
+                            <ion-icon [name]="getIconName(cert.badge)" item-left></ion-icon>
+                            <ion-label small>{{cert.name}}</ion-label>
+                        </ion-item>
+                    </ion-list>
+                    <rating class="colorGold" [(ngModel)]="rate" readOnly="true" [ngModelOptions]="{standalone: true}"></rating>
+                </ion-card-content>
+
+            </ion-card>
+        </div>
+    </form>
 </ion-content>

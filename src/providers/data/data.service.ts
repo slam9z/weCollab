@@ -20,7 +20,7 @@ export class DataService {
         return this.currentUser;
     }
     getServiceListByUid(){
-        '/userService/'+ this.currentUser+'/service'
+        //'/userService/'+ this.currentUser+'/service'
 
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/userService/${this.currentUser}/service.json`)
@@ -120,4 +120,20 @@ export class DataService {
 
     }
 
+    getCurrentUserInfo(){
+
+
+          return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/userProfile/${this.currentUser}.json`)
+                .subscribe(res => {
+                    //console.log(res.json());
+                    resolve(res.json())
+                });
+        });
+    }
+
+    public logout() {
+       
+        this.af.auth.logout();
+    }
 }
