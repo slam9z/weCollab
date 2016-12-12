@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar, Splashscreen,InAppBrowser } from 'ionic-native';
 
 import { LoginPage } from '../pages/pages';
 
@@ -16,6 +16,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+      
     });
   }
+
+ 
 }

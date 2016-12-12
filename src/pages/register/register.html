@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="page">
     <form [formGroup]="registerForm" (ngSubmit)="OnCreateAccount(registerForm.value)">
         <ion-item>
             <ion-label floating>First Name </ion-label>
@@ -36,8 +36,21 @@
             <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
         <control-message [control]="registerForm.get('password')"></control-message>
+        <ion-row></ion-row>
+        <ion-row>
+            <ion-item-group>
+                <ion-item-divider>
+                    Term &amp; Agreement
+                </ion-item-divider>
+                <ion-item class="noBorder" text-wrap>
+                    <ion-checkbox formControlName="agreement" [(ngModel)]="agreement" (click)="onCheckChange($event)"></ion-checkbox>
+                    <ion-label small>I have read and agree to the WeCollab's Term &amp; Service Agreement</ion-label>
+                </ion-item>
+                <control-message [control]="registerForm.get('agreement')"></control-message>
 
-        <button ion-button full item-right icon-left type="Submit" [disabled]="!registerForm.valid" color="primary">
+            </ion-item-group>
+        </ion-row>
+        <button ion-button full item-right icon-left type="Submit" [disabled]="!registerForm.valid || !agreement" color="primary">
             Submit
         </button>
     </form>

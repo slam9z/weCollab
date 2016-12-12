@@ -15,6 +15,7 @@ import { HomePage } from '../../pages/pages';
 })
 export class RegisterPage {
   registerForm: FormGroup;
+  agreement =false;
   constructor(public navCtrl: NavController,
               public formBuilder: FormBuilder,
               public userService: UsersService,
@@ -24,7 +25,8 @@ export class RegisterPage {
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, ValidationService.emailValidator])],
-      password: ['', Validators.compose([Validators.required, ValidationService.passwordValidator])]
+      password: ['', Validators.compose([Validators.required, ValidationService.passwordValidator])],
+      agreement:['', Validators.compose([Validators.required, ValidationService.checkboxValidator])]
     });
 
   }
@@ -32,8 +34,12 @@ export class RegisterPage {
   ionViewDidLoad() {
     console.log('Hello RegisterPage Page');
   }
-
+  onCheckChange($event){
+    this.agreement = !this.agreement;
+  }
   OnCreateAccount(formData){
+
+  //console.log(formData.agreement);
   let loadingCtrl = this.loadingController.create({
       content: 'Creating Account...',
       dismissOnPageChange: true

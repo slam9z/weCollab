@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Observable } from 'rxjs';
-import * as _ from 'lodash';
+
 import { FirebaseListObservable } from 'angularfire2';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -70,7 +70,7 @@ export class SearchPage {
 
   onCardClick($event, serviceDtlObj){
 
-    var userServiceKey: any;
+    //var userServiceKey: any;
     //console.log(serviceDtlObj);
      this.allUserServiceList.then(_n => _n.map( 
 

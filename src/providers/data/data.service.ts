@@ -3,9 +3,7 @@ import { Storage } from '@ionic/storage';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { firebaseConfig } from '../../environment/firebase.config'
 import 'rxjs/add/operator/map';
-import { Http,Response } from '@angular/http';
-import { Observable } from 'rxjs';
-
+import { Http } from '@angular/http';
 
 @Injectable()
 export class DataService {
